@@ -9,7 +9,7 @@ pipeline {
         stage('Build on AWS CodeBuild') {
             steps {
                     awsCodeBuild buildSpecFile: 'buildspec.yml',
-                        credentialsId: 'sanyam',
+                        credentialsId: '92codebuildroot',
                         credentialsType: 'jenkins',
                         projectName: 'satest',
                         region: 'us-east-1',      
