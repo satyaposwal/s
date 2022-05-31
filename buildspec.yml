@@ -5,7 +5,7 @@ phases:
         
           aws s3 cp  s3://sftp-bucket-poswal091993/dev/rmi.txt s3://sftp-bucket-poswal091993/qa/
              
-  build2:
+  post_build:
 
     commands:
 
