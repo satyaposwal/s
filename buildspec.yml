@@ -1,5 +1,13 @@
 version: 0.2
 phases:
 
-post_build:aws s3 cp --recursive s3://sftp-bucket-poswal091993/sftp-testuser-dev/sgrover.txt s3://sftp-bucket-poswal091993/qa
-                     
+build:
+    commands :
+        aws s3 cp --recursive s3://sftp-bucket-poswal091993/sftp-testuser-dev/sgrover.txt s3://sftp-bucket-poswal091993/qa
+
+post_build:
+
+    commands:
+
+       - echo Build completed                      
+
