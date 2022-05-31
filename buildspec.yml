@@ -1,10 +1,9 @@
 version: 0.2
 phases:
   build:
-    commands:
-      script{
+    commands:      
         withAWS(region:'us-east-1',credentials:'AWS_92_poswal09') {
-          aws s3 cp --recursive s3://mybucketforstaticweb1212/dev/sgrover.txt s3://mybucketforstaticweb1212/qa/ --region ap-south-1
+          aws s3 cp --recursive s3://mybucketforstaticweb1212/dev/sgrover.txt s3://mybucketforstaticweb1212/qa/
         }
       }
   post_build:
