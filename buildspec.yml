@@ -1,9 +1,8 @@
 version: 0.2
 
-env:
-  shell: shell-tag
+env:  
   variables:
-    path: "(now.format("yyyyMMdd") + "_OS_Update")"    
+    path:"(now.format("yyyyMMdd") + "_OS_Update")"    
 phases:
   build:
     commands:      
