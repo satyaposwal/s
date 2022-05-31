@@ -9,5 +9,5 @@ phases:
 
     commands:
 
-      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al+'/'+"sa"+'/'                
+      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al/"sa"'/'                
 
