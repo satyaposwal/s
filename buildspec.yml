@@ -2,7 +2,7 @@ version: 0.2
 
 env:  
   variables:
-    path:"(now.format("yyyyMMdd") + "_OS_Update")"    
+    #path:"(now.format("yyyyMMdd") + "_OS_Update")"    
 phases:
   build:
     commands:      
@@ -13,5 +13,5 @@ phases:
 
     commands:
 
-      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al/"$path"'/'                
+      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al/"$now.format("yyyyMMdd") + "_OS_Update""'/'                
 
