@@ -3,7 +3,7 @@ phases:
   build:
     commands:      
         
-          aws s3 cp  s3://sftp-bucket-poswal091993/sftp-testuser-dev/index.html s3://sftp-bucket-poswal091993/qa/
+          aws s3 cp  s3://sftp-bucket-poswal091993/dev/rmi.txt s3://sftp-bucket-poswal091993/qa/
              
   post_build:
 
