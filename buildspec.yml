@@ -2,7 +2,7 @@ version: 0.2
 phases:
   build:
     commands :
-        aws s3 cp --recursive s3://mybucketforstaticweb1212/dev/sgrover.txt s3://mybucketforstaticweb1212/qa/
+        aws s3 cp --recursive s3://mybucketforstaticweb1212/dev/sgrover.txt s3://mybucketforstaticweb1212/qa/ --region ap-south-1
 
   post_build:
 
