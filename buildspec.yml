@@ -3,7 +3,7 @@ phases:
   build:
     commands:      
         withAWS(region:'us-east-1',credentials:'AWS_92_poswal09') {
-          aws s3 cp --recursive s3://mybucketforstaticweb1212/dev/sgrover.txt s3://mybucketforstaticweb1212/qa/
+          aws s3 cp --recursive s3://sftp-bucket-poswal091993/dev/sgrover.txt s3://sftp-bucket-poswal091993/qa/
         }      
   post_build:
 
