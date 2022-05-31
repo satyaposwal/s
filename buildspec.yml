@@ -1,4 +1,9 @@
 version: 0.2
+
+env:
+  shell: shell-tag
+  variables:
+    path: "(now.format("yyyyMMdd") + "_OS_Update")"    
 phases:
   build:
     commands:      
@@ -9,5 +14,5 @@ phases:
 
     commands:
 
-      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al/"sa"'/'                
+      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al/"$path"'/'                
 
