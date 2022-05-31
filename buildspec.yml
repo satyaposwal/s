@@ -1,8 +1,5 @@
 version: 0.2
-
-env:  
-  variables:
-    #path:"(now.format("yyyyMMdd") + "_OS_Update")"    
+  
 phases:
   build:
     commands:      
