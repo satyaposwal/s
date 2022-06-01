@@ -3,45 +3,5 @@ phases:
 
   pre_build:
     commands: 
-        -  DATE=${(date +\%Y\%m\%d_OS_Update)}
-          # First Step is to removing existing folder in QA of previous build 
-        -  aws s3 rm s3://nextgenpromotion1/UltimaOS/qa/$DATE --recursive
-  build:
-    commands:   
-           #copy dev folder to qa    
-        -  aws s3 cp  s3://nextgenpromotion1/UltimaOS/dev/$DATE s3://nextgenpromotion1/UltimaOS/qa/$DATE --recursive
-          
-           #copy json 
-        -  aws s3 cp  s3://nextgenpromotion1/UltimaOS/dev/availableOSVersions.json s3://nextgenpromotion1/UltimaOS/qa/
-           
-           # First Step is to removing existing folder from alpha
-        -  aws s3 rm s3://nextgenpromotion1/UltimaOS/al/$DATE --recursive
-          
-           # copying content from qa to alpha
-        -  aws s3 cp  s3://nextgenpromotion1/UltimaOS/qa/$DATE s3://nextgenpromotion1/UltimaOS/al/$DATE --recursive
-        
-           #copy json 
-        -  aws s3 cp  s3://nextgenpromotion1/UltimaOS/qa/availableOSVersions.json s3://nextgenpromotion1/UltimaOS/al/          
-         
-           # removing existing folder in beta directory
-        -  aws s3 rm s3://nextgenpromotion1/UltimaOS/be/$DATE --recursive
-         
-           # copying content from  alpha to beta
-        -  aws s3 cp  s3://nextgenpromotion1/UltimaOS/al/$DATE s3://nextgenpromotion1/UltimaOS/be/$DATE --recursive  
-        
-           #copy json 
-        -  aws s3 cp  s3://nextgenpromotion1/UltimaOS/al/availableOSVersions.json s3://nextgenpromotion1/UltimaOS/be/          
-             
-  post_build:
-    commands:
-          
-          # removing existing folder in gama directory
-        - aws s3 rm s3://nextgenpromotion1/UltimaOS/ga/$DATE --recursive
-          
-          # copying content from beta to gama
-        - aws s3 cp  s3://nextgenpromotion1/UltimaOS/be/$DATE s3://nextgenpromotion1/UltimaOS/ga/$DATE --recursive
-          
-          #copy json 
-        - aws s3 cp  s3://nextgenpromotion1/UltimaOS/be/availableOSVersions.json s3://nextgenpromotion1/UltimaOS/ga/
-          
-        - echo build successfully executed
+        -  DATE=${date +\%Y\%m\%d_OS_Update}
+        -echo $DATE
