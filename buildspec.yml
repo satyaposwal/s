@@ -3,5 +3,5 @@ phases:
 
   pre_build:
     commands: 
-        -  DATE=${date +\%Y\%m\%d_OS_Update}
-        -echo $DATE
+        -  DATE=$(date +"%Y%m%d_OS_Update")
+        -  echo ${DATE}
