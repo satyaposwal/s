@@ -2,7 +2,7 @@ version: 0.2
 env:  
   variables: 
      #Set the date = current date and foldercomplete name 
-     DATE : "date +\%Y\%m\%d_OS_Update"
+     DATE : "(date +\%Y\%m\%d_OS_Update)"
 phases:
 
   pre_build:
