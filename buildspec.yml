@@ -1,14 +1,50 @@
 version: 0.2
-  
+env:  
+  variables: 
+     #Set the date = current date and foldercomplete name 
+     DATE=$(date +\%Y\%m\%d_OS_Update)
 phases:
+
+  pre_build:
+    commands: 
+          # First Step is to removing existing folder in QA of previous build 
+        -  aws s3 rm s3://nextgen-os-pipeline/UltimaOS/qa/$DATE --recursive
   build:
-    commands:      
+    commands:   
+           #copy dev folder to qa    
+        -  aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/dev/$DATE s3://nextgen-os-pipeline/UltimaOS/qa/$DATE --recursive
+          
+           #copy json 
+        -  aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/dev/availableOSVersions.json s3://nextgen-os-pipeline/UltimaOS/qa/
+           
+           # First Step is to removing existing folder from alpha
+        -  aws s3 rm s3://nextgen-os-pipeline/UltimaOS/al/$DATE --recursive
+          
+           # copying content from qa to alpha
+        -  aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/qa/$DATE s3://nextgen-os-pipeline/UltimaOS/al/$DATE --recursive
         
-          aws s3 cp  s3://sftp-bucket-poswal091993/dev/index.html s3://sftp-bucket-poswal091993/qa/
+           #copy json 
+        -  aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/qa/availableOSVersions.json s3://nextgen-os-pipeline/UltimaOS/al/          
+         
+           # removing existing folder in beta directory
+        -  aws s3 rm s3://nextgen-os-pipeline/UltimaOS/be/$DATE --recursive
+         
+           # copying content from  alpha to beta
+        -  aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/al/$DATE s3://nextgen-os-pipeline/UltimaOS/be/$DATE --recursive  
+        
+           #copy json 
+        -  aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/al/availableOSVersions.json s3://nextgen-os-pipeline/UltimaOS/be/          
              
   post_build:
-
     commands:
-
-      aws s3 cp  s3://sftp-bucket-poswal091993/qa/index.html s3://sftp-bucket-poswal091993/al/"$now.format("yyyyMMdd") + "_OS_Update""'/'                
-
+          
+          # removing existing folder in gama directory
+        - aws s3 rm s3://nextgen-os-pipeline/UltimaOS/ga/$DATE --recursive
+          
+          # copying content from beta to gama
+        - aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/be/$DATE s3://nextgen-os-pipeline/UltimaOS/ga/$DATE --recursive
+          
+          #copy json 
+        - aws s3 cp  s3://nextgen-os-pipeline/UltimaOS/be/availableOSVersions.json s3://nextgen-os-pipeline/UltimaOS/ga/
+          
+        - echo build successfully executed
